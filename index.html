@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderne Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 🌫 moderner Hintergrund */
+body {
+    background: linear-gradient(135deg, #bff7f2, #a8d8ff);
+    color: #111;
+}
+
+/* NAV */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-box {
+    max-width: 700px;
+    padding: 60px;
+}
+
+.hero-box h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.hero-box p {
+    color: #555;
+    font-size: 18px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* CARDS (Inseln modern) */
+.card {
+    background: white;
+    padding: 55px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+}
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* dezenter Hover */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* BUTTON */
+button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+
+    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+    transition: all 0.15s ease;
+}
+
+/* Hover = leicht hochgehen */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+/* Klick = „reindrücken“ */
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+}
+
+button:hover {
+    opacity: 0.85;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div>Meine Seite</div>
+    <div>Menu</div>
+</header>
+
+<div class="hero">
+    <div class="hero-box">
+        <h1>Willkommen</h1>
+        <p>Eine neue seite Meinerseits.</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Hate</h2>
+        <p>Hier findet man ein bisschen hate</p>
+        <a href="Site4.html"><button>Mehr</button></a>
+    </div>
+
+    <div class="card">
+        <h2>Über Mich</h2>
+        <p>Minimalistisch und klar strukturiert</p>
+        <button>Öffnen</button>
+    </div>
+
+    <div class="card">
+        <h2>Noch nichts</h2>
+        <p>Hierfür habe ich keine verwendung...</p>
+        <button>Nichts</button>
+    </div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll(".card");
+
+function check() {
+    cards.forEach(c => {
+        const top = c.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100) {
+            c.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", check);
+check();
+</script>
+
+</body>
+</html>
